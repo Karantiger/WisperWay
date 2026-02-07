@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WisperWays | Authentic Tribal Tourism Experiences</title>
+    <meta name="description"
+        content="Tribal-led tourism platform empowering indigenous communities through sustainable travel experiences. Ministry of Tribal Affairs (MoTA) aligned model. Bharat Tribes Fest 2026 Applicant.">
+    <meta name="keywords"
+        content="tribal tourism, indigenous travel, sustainable tourism, Bharat Tribes Fest, MoTA, TRIFED, tribal guides, cultural experiences">
+    <meta name="author" content="WisperWays Team">
+
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="WisperWays | Authentic Tribal Tourism Experiences">
+    <meta property="og:description" content="Empowering tribal communities through sustainable tourism">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wisperways.in">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Vercel Analytics -->
+    <script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+
+    <style>
+        :root {
+            --earth-deep: #1a120b;
+            --earth-rich: #3c2a21;
+            --terracotta: #d1512d;
+            --ochre: #ffb347;
+            --sand: #f5e8c7;
+            --forest: #2d5016;
+            --forest-light: #5a8c5a;
+            --cream: #fffaf0;
+            --white: #FFFFFF;
+            --font-display: 'Crimson Pro', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --border-radius: 16px;
+            --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --shadow-heavy: 0 25px 60px rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, var(--terracotta) 0%, var(--ochre) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+            --gradient-light: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--earth-deep);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cream);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .preloader-logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--earth-deep);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .preloader-logo img {
+            color: var(--terracotta);
+            font-size: 2.2rem;
+        }
+
+        .preloader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--sand);
+            border-top: 4px solid var(--terracotta);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1.5rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: var(--forest);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .status-bar i {
+            color: var(--ochre);
+            font-size: 1rem;
+            z-index: 1;
+        }
+
+        .status-highlight {
+            background: var(--terracotta);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 250, 240, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(209, 81, 45, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.5rem 0;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-medium);
+            padding: 0.3rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--earth-deep);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .logo i {
+            color: var(--terracotta);
+            font-size: 1.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover i {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--earth-deep);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .cta-button {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(209, 81, 45, 0.3);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(209, 81, 45, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-menu span {
+            width: 28px;
+            height: 3px;
+            background: var(--earth-deep);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-light);
+            padding-top: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d1512d' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5vw, 4.8rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--earth-deep);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--earth-deep) 0%, var(--terracotta) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--earth-rich);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .badge.launch-badge {
+            background: var(--gradient-primary);
+            animation: pulse 2s infinite;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(209, 81, 45, 0.3);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(209, 81, 45, 0.4);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::after {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--earth-deep);
+            border: 2px solid var(--earth-deep);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--earth-deep);
+            color: var(--white);
+            transform: translateY(-3px);
+            border-color: var(--earth-deep);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.8rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+            background: var(--white);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            display: block;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--earth-rich);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            height: 500px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .hero-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .hero-image-container i {
+            font-size: 12rem;
+            color: rgba(255, 255, 255, 0.9);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            animation: floatIcon 6s ease-in-out infinite;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            animation: float 6s ease-in-out infinite;
+            width: 190px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        .floating-card.card-1 {
+            top: 10%;
+            right: -8%;
+            animation-delay: 0s;
+            transform: rotate(3deg);
+        }
+
+        .floating-card.card-2 {
+            bottom: 15%;
+            left: -8%;
+            animation-delay: 2s;
+            transform: rotate(-2deg);
+        }
+
+        .floating-card-title {
+            font-weight: 600;
+            color: var(--earth-deep);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .floating-card-value {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--terracotta);
+            font-weight: 700;
+        }
+
+        /* Launch Timeline */
+        .launch-timeline {
+            background: var(--white);
+            padding: 4rem 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .launch-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .timeline-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--earth-deep);
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .timeline-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-steps::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sand), var(--terracotta), var(--sand));
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .timeline-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .timeline-step.completed .step-circle {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+            transform: scale(1.1);
+        }
+
+        .timeline-step.current .step-circle {
+            background: var(--gradient-primary);
+            color: var(--white);
+            animation: pulseGlow 2s infinite;
+            box-shadow: 0 0 30px rgba(209, 81, 45, 0.4);
+        }
+
+        .timeline-step.upcoming .step-circle {
+            background: var(--sand);
+            color: var(--earth-rich);
+            border: 2px solid var(--sand);
+        }
+
+        .step-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 3;
+        }
+
+        .step-circle i {
+            font-size: 1.5rem;
+        }
+
+        .step-content {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-label {
+            font-weight: 700;
+            color: var(--earth-deep);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step-date {
+            color: var(--terracotta);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(209, 81, 45, 0.1);
+            border-radius: 20px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--terracotta);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(209, 81, 45, 0.1);
+            border-radius: 50px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            color: var(--earth-deep);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--earth-deep) 0%, var(--terracotta) 50%, var(--earth-deep) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: shine 3s ease-in-out infinite alternate;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--earth-rich);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            padding: 3rem;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .about-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--earth-deep);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .about-card p {
+            color: var(--earth-rich);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .founder-quote {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .founder-quote::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .quote-text {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .quote-author .author-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .quote-author span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Problem/Why Section */
+        .problem-section {
+            background: var(--gradient-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .why-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(209, 81, 45, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover .why-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Model Section */
+        .model-section {
+            background: var(--earth-deep);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .model-section .section-label {
+            color: var(--ochre);
+            background: rgba(232, 163, 99, 0.1);
+        }
+
+        .model-section .section-title {
+            background: linear-gradient(135deg, var(--white) 0%, var(--ochre) 50%, var(--white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .model-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .revenue-distribution {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 4rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .revenue-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .revenue-bar {
+            position: relative;
+        }
+
+        .revenue-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .revenue-bar-fill {
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(209, 81, 45, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .revenue-bar-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Cultural Preservation */
+        .culture-principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .principle-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .principle-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .principle-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .principle-card:hover .principle-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Fest Section */
+        .fest-section {
+            background: var(--gradient-secondary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fest-section .section-label {
+            color: var(--ochre);
+            background: rgba(232, 163, 99, 0.15);
+        }
+
+        .fest-section .section-title {
+            background: linear-gradient(135deg, var(--white) 0%, var(--ochre) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fest-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .fest-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .fest-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .fest-info p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .fest-list {
+            list-style: none;
+            margin: 2.5rem 0;
+        }
+
+        .fest-list li {
+            padding: 1.2rem 0;
+            padding-left: 3rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .fest-list li:last-child {
+            border-bottom: none;
+        }
+
+        .fest-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--ochre);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .fest-activities {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .fest-activities h4 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .activity-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .activity-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Partners Section */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .partner-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-secondary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .partner-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .partner-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--earth-deep);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(60, 42, 33, 0.1);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--cream);
+            color: var(--earth-deep);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(209, 81, 45, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(209, 81, 45, 0.3);
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(209, 81, 45, 0.4);
+        }
+
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .info-item i {
+            color: var(--terracotta);
+            font-size: 1.8rem;
+            margin-top: 0.3rem;
+            background: rgba(209, 81, 45, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--earth-deep);
+            color: var(--white);
+            padding: 5rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-about h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-about p {
+            opacity: 0.85;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--ochre);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--ochre);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-badge:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 25px rgba(209, 81, 45, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 30px rgba(209, 81, 45, 0.4);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--white);
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            z-index: 2000;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 400px;
+            border-left: 4px solid var(--terracotta);
+            transform-origin: top right;
+        }
+
+        .notification-success {
+            border-left-color: var(--forest);
+        }
+
+        .notification-error {
+            border-left-color: #ff4757;
+        }
+
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        @keyframes floatIcon {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.05);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(209, 81, 45, 0.3);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(209, 81, 45, 0.4);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(209, 81, 45, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(209, 81, 45, 0.6);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%) scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(100%) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+
+            .hero-container,
+            .fest-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .hero-image-container {
+                height: 400px;
+                order: -1;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: var(--shadow-heavy);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(8px, -7px);
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-steps {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .timeline-steps::before {
+                display: none;
+            }
+
+            .timeline-step {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                text-align: left;
+            }
+
+            .step-circle {
+                margin: 0;
+                flex-shrink: 0;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .fest-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .hero-container {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-card,
+            .why-card,
+            .principle-card,
+            .partner-card {
+                padding: 2rem;
+            }
+
+            .contact-form-container,
+            .contact-info {
+                padding: 2rem;
+            }
+
+            .launch-timeline {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="./favicon.png"/>
+                WisperWays
+            </div>
+            <div class="preloader-spinner"></div>
+            <p>Loading authentic tribal experiences...</p>
+        </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <i class="fas fa-info-circle"></i>
+        <span> WisperWays Foundation is currently in processing phase</span>
+        <span class="status-highlight">Launching Soon!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                WisperWays
+            </a>
+            <button class="mobile-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#why">Why We Exist</a></li>
+                <li><a href="#model">Our Model</a></li>
+                <li><a href="#launch">Launch Status</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="badge launch-badge">
+                    <i class="fas fa-rocket"></i>
+                    Official Launch in Progress
+                </div>
+                <h1>Empowering Tribal Communities Through Sustainable Tourism</h1>
+                <p class="subtitle">WisperWays Foundation is creating authentic experiences that connect travelers
+                    with indigenous communities while ensuring economic empowerment and cultural preservation.</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn-primary">
+                        <i class="fas fa-eye"></i> Explore Our Vision
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <i class="fas fa-handshake"></i> Pre-register Interest
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Pilot Communities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span>
+                        <span class="stat-label">Launch States</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="45">0</span>
+                        <span class="stat-label">Tribal Guides Ready</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2026">2026</span>
+                        <span class="stat-label">Year</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="floating-card card-1">
+                    <div class="floating-card-title">Founder's Vision</div>
+                    <div class="floating-card-value">Community First</div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="floating-card-title">Target Launch</div>
+                    <div class="floating-card-value">Q2 2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Timeline Section -->
+    <section id="launch">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Our Journey</span>
+                <h2 class="section-title">From Vision to Reality: Our Launch Timeline</h2>
+                <p class="section-subtitle">Following a structured approach to ensure sustainable impact and community
+                    readiness</p>
+            </div>
+            <div class="launch-timeline">
+                <h3 class="timeline-title">Launch Progress Status</h3>
+                <div class="timeline-steps">
+                    <div class="timeline-step completed">
+                        <div class="step-circle">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-label">Research & Planning</div>
+                            <div class="step-date">Dec 2025 - Jan 2026</div>
+                            <p>Community needs assessment, legal framework, and business model development</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step completed">
+                        <div class="step-circle">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-label">Pilot Program</div>
+                            <div class="step-date">Jan 2026 - Feb 2026</div>
+                            <p>Working with communities to test experiences and revenue model</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step current">
+                        <div class="step-circle">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                        <div class="step-content">
+                            <div class="step-label">Scale Preparation</div>
+                            <div class="step-date">Feb 2026 - Mar 2026</div>
+                            <p>Guide training, platform development, and partnership establishment</p>
+                        </div>
+                    </div>
+                    <div class="timeline-step upcoming">
+                        <div class="step-circle">
+                            4
+                        </div>
+                        <div class="step-content">
+                            <div class="step-label">Official Launch</div>
+                            <div class="step-date">Mar 2026</div>
+                            <p>Full platform launch with 12 communities across 1 states</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Who We Are</span>
+                <h2 class="section-title">Building bridges between cultures, empowering communities</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Our Mission</h3>
+                    <p>To create sustainable livelihoods for tribal communities through respectful cultural tourism,
+                        ensuring economic empowerment while preserving heritage.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>A world where tribal communities thrive by sharing their wisdom, culture, and natural heritage on
+                        their own terms.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Our Values</h3>
+                    <p>Respect for tribal sovereignty • Sustainability in all practices • Community ownership & benefit
+                        • Authenticity in cultural exchange</p>
+                </div>
+            </div>
+            <div class="founder-quote">
+                <p class="quote-text">"Born in a tribal community myself, I witnessed how tourism often bypassed those
+                    who owned the culture. WisperWays was created to ensure that benefits flow directly to the source
+                    - the tribal communities themselves."</p>
+                <div class="quote-author">
+                    <div class="author-avatar">AR</div>
+                    <div>
+                        Anil Rot
+                        <span>Founder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why We Exist Section -->
+    <section id="why" class="problem-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">The Problem</span>
+                <h2 class="section-title">Why Tribal Communities Need This Initiative</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">💰</div>
+                    <h3>Income Inequality</h3>
+                    <p>80% of tribal tourism revenue flows to external operators, bypassing the actual culture-keepers
+                        and knowledge holders.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🎭</div>
+                    <h3>Cultural Appropriation</h3>
+                    <p>Traditional practices are often commercialized and stripped of their authentic cultural context
+                        and meaning.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📚</div>
+                    <h3>Knowledge Erosion</h3>
+                    <p>Elder knowledge and traditional practices are disappearing without pathways for economic value
+                        creation.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚶</div>
+                    <h3>Youth Migration</h3>
+                    <p>Lack of local livelihood opportunities forces youth to migrate, leading to community
+                        disintegration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Section -->
+    <section id="model" class="model-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Our Model</span>
+                <h2 class="section-title">A transparent, equitable approach aligned with MoTA objectives</h2>
+                <p class="section-subtitle">Community Partnership Model built on trust, transparency, and mutual benefit
+                </p>
+            </div>
+            <div class="revenue-distribution">
+                <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">Transparent Revenue
+                    Distribution</h3>
+                <p style="opacity: 0.9; margin-bottom: 2rem;">Every rupee earned is accounted for and shared equitably.
+                    The Community Development Fund supports education, healthcare, and cultural preservation projects
+                    decided by community councils.</p>
+                <div class="revenue-bars">
+                    <div class="revenue-bar">
+                        <div class="revenue-bar-label">
+                            <span>Direct to Guides & Community</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="revenue-bar-fill" style="width: 70%;">70% - Direct Community Benefit</div>
+                    </div>
+                    <div class="revenue-bar">
+                        <div class="revenue-bar-label">
+                            <span>Community Development Fund</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="revenue-bar-fill" style="width: 50%;">50% - Collective Community Projects</div>
+                    </div>
+                    <div class="revenue-bar">
+                        <div class="revenue-bar-label">
+                            <span>Platform Operations & Growth</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="revenue-bar-fill" style="width: 30%;">30% - Sustainable Operations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Preservation -->
+    <section id="culture">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Cultural Protection</span>
+                <h2 class="section-title">Protecting heritage while creating economic value</h2>
+                <p class="section-subtitle">Our commitment to responsible tourism that honors tribal sovereignty and
+                    cultural integrity</p>
+            </div>
+            <div class="culture-principles">
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-place-of-worship"></i>
+                    </div>
+                    <h3>Sacred Sites Protection</h3>
+                    <p>No photography or large groups at sensitive cultural sites. Visits only with explicit community
+                        permission and cultural protocols.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h3>Controlled Tourism Flow</h3>
+                    <p>Limited group sizes, seasonal restrictions, and community-controlled visitor numbers to prevent
+                        over-tourism and cultural disruption.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>Community Voice First</h3>
+                    <p>Communities decide what to share, when to share, how to represent their culture, and have veto
+                        power on all content and experiences.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Knowledge Documentation</h3>
+                    <p>Recording oral histories and traditional practices with community consent for preservation, not
+                        commercialization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fest Section -->
+    <section id="fest" class="fest-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Our Platform for National Showcase</h2>
+                <p class="section-subtitle">Demonstrating tribal-led tourism as a scalable sustainable livelihood model
+                </p>
+            </div>
+            <div class="fest-content">
+                <div class="fest-info">
+                    <h3>National Platform for Impact Amplification</h3>
+                    <p>Wisperways 2026 provides the ideal national platform to showcase our community-led
+                        tourism model. Our participation will demonstrate a working framework for tribal empowerment
+                        through:</p>
+                    <ul class="fest-list">
+                        <li>Real impact stories from pilot communities</li>
+                        <li>Transparent community benefit sharing model</li>
+                        <li>Cultural preservation through respectful engagement</li>
+                        <li>Scalable framework for other tribal regions</li>
+                    </ul>
+                    <p>We plan to bring actual community members as representatives to share their experiences directly.
+                    </p>
+                </div>
+                <div class="fest-activities">
+                    <h4>Proposed Festival Activities</h4>
+                    <div class="activity-grid">
+                        <div class="activity-item">
+                            <div class="activity-icon">🎨</div>
+                            <p>Live Tribal Craft Demonstrations</p>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🏘️</div>
+                            <p>Virtual Reality Village Tours</p>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🤝</div>
+                            <p>Direct Guide-Traveler Interaction</p>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <p>Impact Data Visualization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Get Involved</span>
+                <h2 class="section-title">Join us in empowering tribal communities</h2>
+                <p class="section-subtitle">We're looking for partners, supporters, and early adopters who believe in
+                    community-led tourism</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <h3>Pre-register Your Interest</h3>
+                    <p style="margin-bottom: 2rem; color: var(--earth-rich);">Join our waitlist to be notified when
+                        experiences launch and receive early access.</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">I am interested as a *</label>
+                            <select id="category" required>
+                                <option value="">Select your interest</option>
+                                <option value="traveler">Traveler / Experience Seeker</option>
+                                <option value="community">Tribal Community Member</option>
+                                <option value="partner">Potential Partner / Collaborator</option>
+                                <option value="investor">Investor / Donor</option>
+                                <option value="volunteer">Volunteer / Researcher</option>
+                                <option value="media">Media / Press</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message / Specific Interest</label>
+                            <textarea id="message"
+                                placeholder="Tell us more about your interest or any specific questions..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Interest</button>
+                    </form>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Contact Number</h4>
+                        <p>+91-XXXXXXXXXX (Available post-launch)</p>
+                        <small style="opacity: 0.7;">Currently in processing phase - formal contact channels opening
+                            Mar 2026</small>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email for Inquiries</h4>
+                        <p>contact@wisperways.in (Active post-launch)</p>
+                        <small style="opacity: 0.7;">For urgent inquiries during processing:
+                            wisperways.in</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Wisperways Foundation</h3>
+                    <p>Empowering tribal communities through sustainable, respectful tourism. Creating economic dignity
+                        through cultural pride and community ownership.</p>
+                    <p style="font-style: italic; margin-top: 1rem; opacity: 0.9;">"By the community, for the community,
+                        with the community"</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#launch">Launch Status</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#model">Our Model</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal & Compliance</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                        <li><a href="#">Ethical Tourism Charter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Wisperways. All rights reserved. | Currently in foundation establishment and
+                    launch preparation phase.</p>
+                <div class="footer-badges">
+                    <span class="footer-badge"><i class="fas fa-leaf"></i> Sustainable Tourism</span>
+                    <span class="footer-badge"><i class="fas fa-hands-helping"></i> Community-Led</span>
+                    <span class="footer-badge"><i class="fas fa-award"></i> Bharat Tribes</span>
+                    <span class="footer-badge"><i class="fas fa-rocket"></i> Launching 2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Vercel Analytics & Speed Insights -->
+    <script>
+        // Vercel Analytics
+        (function () {
+            window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        })();
+
+        // Vercel Speed Insights
+        (function () {
+            var speedInsightsScript = document.createElement('script');
+            speedInsightsScript.src = 'https://va.vercel-scripts.com/v1/speed-insights/script.js';
+            speedInsightsScript.defer = true;
+            document.head.appendChild(speedInsightsScript);
+        })();
+    </script>
+
+    <script>
+        // DOM Ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Preloader
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1500);
+
+            // Navigation
+            const navbar = document.getElementById('navbar');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.getElementById('navLinks');
+            const backToTop = document.getElementById('backToTop');
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Back to top button
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+
+                // Update active nav link
+                updateActiveNavLink();
+            });
+
+            // Mobile menu toggle
+            function toggleMenu() {
+                mobileMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            }
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+
+                    if (href === '#') return;
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Back to top
+            backToTop.addEventListener('click', function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Update active nav link
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                const scrollPos = window.scrollY + 100;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Animated counters
+            const counters = document.querySelectorAll('.stat-number');
+
+            function animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 100;
+                const duration = 2000;
+                const stepTime = Math.abs(Math.floor(duration / target));
+
+                const timer = setInterval(() => {
+                    current += increment;
+
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, stepTime);
+            }
+
+            // Intersection Observer for counters
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        if (!isNaN(target)) {
+                            animateCounter(counter, target);
+                            counterObserver.unobserve(counter);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            counters.forEach(counter => counterObserver.observe(counter));
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+
+                    // Simple validation
+                    if (!data.name || !data.email || !data.category) {
+                        showNotification('Please fill all required fields', 'error');
+                        return;
+                    }
+
+                    // Simulate form submission
+                    showNotification('Thank you for your interest! We will notify you when we launch.', 'success');
+
+                    // Reset form
+                    this.reset();
+                });
+            }
+
+            // Show notification
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                    <button class="notification-close"><i class="fas fa-times"></i></button>
+                `;
+
+                document.body.appendChild(notification);
+
+                // Close button
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.addEventListener('click', () => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                });
+
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideOut 0.3s ease';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
+
+            // Animate revenue bars when in view
+            const revenueObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = document.querySelectorAll('.revenue-bar-fill');
+                        bars.forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0';
+
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 300);
+                        });
+                        revenueObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const revenueSection = document.querySelector('.revenue-distribution');
+            if (revenueSection) {
+                revenueObserver.observe(revenueSection);
+            }
+
+            // Initialize animations
+            initAnimations();
+        });
+
+        // Initialize animations on scroll
+        function initAnimations() {
+            const animatedElements = document.querySelectorAll('.about-card, .why-card, .principle-card, .partner-card');
+
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeObserver.observe(el);
+            });
+        }
+
+        // Mobile menu toggle function (global for onclick)
+        function toggleMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.getElementById('navLinks');
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
